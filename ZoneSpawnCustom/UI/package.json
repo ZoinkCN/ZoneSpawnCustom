@@ -1,0 +1,27 @@
+{
+  "name": "hookui-framework",
+  "version": "0.1.0",
+  "description": "> JavaScript library that helps you integrate with Cities: Skylines 2 Game UI. Helps with both styling and communication with your C# mods.",
+  "main": "index.mjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@babel/runtime": "^7.23.5",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.15.0",
+    "@react-native-community/slider": "^4.4.4",
+    "esbuild": "^0.19.7",
+    "hookui-framework": "github:captain-of-coit/hookui-framework",
+    "react": "^18.2.0",
+    "react-native": "^0.73.0",
+    "react-slider": "^2.0.6",
+    "resize-observer": "^1.0.4"
+  },
+  "devDependencies": {
+    "react-dom": "^18.2.0"
+  }
+}
