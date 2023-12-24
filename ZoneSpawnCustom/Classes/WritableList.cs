@@ -7,6 +7,13 @@ namespace ZoneSpawnCustom.Classes
 {
     public class WritableList<T> : List<T>, IJsonWritable
     {
+        public WritableList() : base() { }
+
+        public WritableList(IEnumerable<T> items) : base()
+        {
+            AddRange(items);
+        }
+
         public void Write(IJsonWriter writer)
         {
             Type innerType = typeof(T);

@@ -470,24 +470,7 @@ namespace ZoneSpawnCustom.Systems
                                     string o_min = Plugin.m_oMinSize.Value;
                                     string o_max = Plugin.m_oMaxSize.Value;
 
-                                    bool flag3 = true;
-
-                                    if (Plugin.ResidentialIndexes.Contains(zoneType.m_Index))
-                                    {
-                                        if (Plugin.m_rEnabled.Value && !(math.all(lotSize >= Plugin.ResidentialSizes[r_min]) && math.all(lotSize <= Plugin.ResidentialSizes[r_max]))) flag3 = false;
-                                    }
-                                    if (Plugin.CommercialIndexes.Contains(zoneType.m_Index))
-                                    {
-                                        if (Plugin.m_cEnabled.Value && !(math.all(lotSize >= Plugin.CommercialSizes[c_min]) && math.all(lotSize <= Plugin.CommercialSizes[c_max]))) flag3 = false;
-                                    }
-                                    if (Plugin.IndustrialIndexes.Contains(zoneType.m_Index))
-                                    {
-                                        if (Plugin.m_iEnabled.Value && !(math.all(lotSize >= Plugin.IndustrialSizes[i_min]) && math.all(lotSize <= Plugin.IndustrialSizes[i_max]))) flag3 = false;
-                                    }
-                                    if (Plugin.OfficeIndexes.Contains(zoneType.m_Index))
-                                    {
-                                        if (Plugin.m_oEnabled.Value && !(math.all(lotSize >= Plugin.OfficeSizes[o_min]) && math.all(lotSize <= Plugin.OfficeSizes[o_max]))) flag3 = false;
-                                    }
+                                    bool flag3 = Plugin.JudgeBuilding(zoneType.m_Index, lotSize);
 
                                     if (math.all(lotSize <= @int) && y <= maxHeight && flag3)
                                     {

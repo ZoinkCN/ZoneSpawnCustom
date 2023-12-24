@@ -13,13 +13,13 @@
     <AssemblyName>ZoneSpawnCustom</AssemblyName>
     <Description>ZoneSpawnCustom</Description>
     <RootNamespace>ZoneSpawnCustom</RootNamespace>
-    <Version>0.1.1</Version>
+    <Version>0.2.0</Version>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
   <PropertyGroup>
     <Cities2_Location>D:\SteamLibrary\steamapps\common\Cities Skylines II</Cities2_Location>
-    <BepInExVersion>6</BepInExVersion>
+    <BepInExVersion>5</BepInExVersion>
   </PropertyGroup>
 
   <ItemGroup>
