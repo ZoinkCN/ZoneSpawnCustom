@@ -23673,7 +23673,7 @@
   var import_react8 = __toESM(require_react());
   var $TabControl = ({ react, tabs, style }) => {
     const [activeTab, setActiveTab] = react.useState(tabs.length > 0 ? tabs[0].name : "");
-    return /* @__PURE__ */ import_react8.default.createElement("div", { style }, /* @__PURE__ */ import_react8.default.createElement("div", { className: "panel_YqS", style: { marginLeft: "auto", marginRight: "auto", width: "100%" } }, /* @__PURE__ */ import_react8.default.createElement("div", { className: "tab-bar_oPw", style: { padding: "0" } }, tabs.map((tab) => /* @__PURE__ */ import_react8.default.createElement("div", { key: tab.name, className: `tab_Hrb ${activeTab === tab.name ? "selected" : ""}`, style: { flex: "1" }, onClick: () => setActiveTab(tab.name), style: { flex: "1", borderRadius: "0" } }, tab.icon ? /* @__PURE__ */ import_react8.default.createElement("img", { src: tab.icon, alt: "", style: { maxWidth: "32rem" } }) : null, tab.iconOnly ? null : /* @__PURE__ */ import_react8.default.createElement("div", null, " ", tab.name, " ")))), /* @__PURE__ */ import_react8.default.createElement("div", null, tabs.map((tab) => /* @__PURE__ */ import_react8.default.createElement(
+    return /* @__PURE__ */ import_react8.default.createElement("div", { style }, /* @__PURE__ */ import_react8.default.createElement("div", { className: "panel_YqS", style: { marginLeft: "auto", marginRight: "auto", width: "100%" } }, /* @__PURE__ */ import_react8.default.createElement("div", { className: "tab-bar_oPw", style: { padding: "0" } }, tabs.map((tab) => /* @__PURE__ */ import_react8.default.createElement("div", { key: tab.name, className: `tab_Hrb ${activeTab === tab.name ? "selected" : ""}`, onClick: () => setActiveTab(tab.name), style: { flex: "1", borderRadius: "0" } }, tab.icon ? /* @__PURE__ */ import_react8.default.createElement("img", { src: tab.icon, alt: "", style: { maxWidth: "32rem" } }) : null, tab.iconOnly ? null : /* @__PURE__ */ import_react8.default.createElement("div", null, " ", tab.name, " ")))), /* @__PURE__ */ import_react8.default.createElement("div", null, tabs.map((tab) => /* @__PURE__ */ import_react8.default.createElement(
       "div",
       {
         key: tab.name,
@@ -23687,11 +23687,17 @@
   // _content.jsx
   var panelID = "zoinkcn.zonespawncustom";
   var $ThemeTab = ({ react, datas }) => {
+    const [minStr, setMinStr] = react.useState("Min");
+    const [maxStr, setMaxStr] = react.useState("Max");
+    use_data_update_default(react, "zone_spawn_custom.min", setMinStr);
+    use_data_update_default(react, "zone_spawn_custom.max", setMaxStr);
     return /* @__PURE__ */ import_react9.default.createElement("div", { style: { flex: "1" } }, datas.map(
-      (item, index) => /* @__PURE__ */ import_react9.default.createElement("div", { key: index, style: { display: "flex", flexDirection: "row", width: "100%", flex: "1", alignItems: "center" } }, /* @__PURE__ */ import_react9.default.createElement("img", { src: item.icon, alt: "", style: { height: "42.000000rem", width: "42.000000rem", marginLeft: "10.000000rem", marginRight: "5.000000rem" } }), /* @__PURE__ */ import_react9.default.createElement("div", { style: { display: "flex", flexDirection: "row", width: "100%", flex: "1" } }, /* @__PURE__ */ import_react9.default.createElement("div", { className: "field_vGA" }, "Min"), /* @__PURE__ */ import_react9.default.createElement(select_default, { react, options: item.minSizes, selected: item.min, onSelectionChanged: item.onMinChnaged, style: { flex: "1", margin: "10rem", minWidth: "10rem" } })), /* @__PURE__ */ import_react9.default.createElement("div", { style: { display: "flex", flexDirection: "row", width: "100%", flex: "1" } }, /* @__PURE__ */ import_react9.default.createElement("div", { className: "field_vGA" }, "Max"), /* @__PURE__ */ import_react9.default.createElement(select_default, { react, options: item.maxSizes, selected: item.max, onSelectionChanged: item.onMaxChanged, style: { flex: "1", margin: "10rem", minWidth: "10rem" } })))
+      (item, index) => /* @__PURE__ */ import_react9.default.createElement("div", { key: index, style: { display: "flex", flexDirection: "row", width: "100%", flex: "1", alignItems: "center" } }, /* @__PURE__ */ import_react9.default.createElement("img", { src: item.icon, alt: "", style: { height: "42.000000rem", width: "42.000000rem", marginLeft: "10.000000rem", marginRight: "5.000000rem" } }), /* @__PURE__ */ import_react9.default.createElement("div", { style: { display: "flex", flexDirection: "row", width: "100%", flex: "1", alignItems: "center" } }, /* @__PURE__ */ import_react9.default.createElement("div", { className: "field_vGA" }, minStr), /* @__PURE__ */ import_react9.default.createElement(select_default, { react, options: item.minSizes, selected: item.min, onSelectionChanged: item.onMinChnaged, style: { flex: "1", margin: "10rem", minWidth: "10rem" } })), /* @__PURE__ */ import_react9.default.createElement("div", { style: { display: "flex", flexDirection: "row", width: "100%", flex: "1", alignItems: "center" } }, /* @__PURE__ */ import_react9.default.createElement("div", { className: "field_vGA" }, maxStr), /* @__PURE__ */ import_react9.default.createElement(select_default, { react, options: item.maxSizes, selected: item.max, onSelectionChanged: item.onMaxChanged, style: { flex: "1", margin: "10rem", minWidth: "10rem" } })))
     ));
   };
   var $SettingPage = ({ react, title, enabled, normalData, hasDetail = false, detailDatas = null, detailed = false, hasTheme = false, onEnabledChanged = null, onDetailedChanged = null }) => {
+    const [detailStr, setDetailStr] = react.useState("Detail");
+    use_data_update_default(react, "zone_spawn_custom.detail", setDetailStr);
     const normalPage = /* @__PURE__ */ import_react9.default.createElement($ThemeTab, { react, datas: normalData.data });
     const detailedPage = hasDetail ? detailDatas ? hasTheme ? /* @__PURE__ */ import_react9.default.createElement(tab_control_default, { react, tabs: detailDatas.map((datas) => ({
       name: datas.isEU ? "EU" : "NA",
@@ -23699,7 +23705,7 @@
       iconOnly: true,
       content: /* @__PURE__ */ import_react9.default.createElement($ThemeTab, { react, datas: datas.data })
     })) }) : /* @__PURE__ */ import_react9.default.createElement($ThemeTab, { react, datas: detailDatas[0].data }) : null : null;
-    return /* @__PURE__ */ import_react9.default.createElement("div", { className: "info-section_I7V" }, /* @__PURE__ */ import_react9.default.createElement("div", { style: { display: "flex", flexDirection: "row", width: "100%", alignItems: "center" } }, /* @__PURE__ */ import_react9.default.createElement(checkbox_default, { react, style: { alignSelf: "center", margin: "10rem" }, checked: enabled, onToggle: onEnabledChanged }), /* @__PURE__ */ import_react9.default.createElement("h3", { style: { flex: "1", margin: "auto 15rem" } }, title), hasDetail && enabled ? /* @__PURE__ */ import_react9.default.createElement("div", { style: { display: "flex", flexDirection: "row", alignItems: "center" } }, /* @__PURE__ */ import_react9.default.createElement("h4", { style: { margin: "auto 5rem auto auto" } }, "Detail"), /* @__PURE__ */ import_react9.default.createElement(checkbox_default, { react, style: { alignSelf: "center", margin: "10rem" }, checked: detailed, onToggle: onDetailedChanged })) : null), enabled ? /* @__PURE__ */ import_react9.default.createElement("div", { className: "section_sop" }, detailed ? detailedPage : normalPage) : null);
+    return /* @__PURE__ */ import_react9.default.createElement("div", { className: "info-section_I7V" }, /* @__PURE__ */ import_react9.default.createElement("div", { style: { display: "flex", flexDirection: "row", width: "100%", alignItems: "center" } }, /* @__PURE__ */ import_react9.default.createElement(checkbox_default, { react, style: { alignSelf: "center", margin: "10rem" }, checked: enabled, onToggle: onEnabledChanged }), /* @__PURE__ */ import_react9.default.createElement("h3", { style: { flex: "1", margin: "auto 15rem" } }, title), hasDetail && enabled ? /* @__PURE__ */ import_react9.default.createElement("div", { style: { display: "flex", flexDirection: "row", alignItems: "center" } }, /* @__PURE__ */ import_react9.default.createElement("h4", { style: { margin: "auto 5rem auto auto" } }, detailStr), /* @__PURE__ */ import_react9.default.createElement(checkbox_default, { react, style: { alignSelf: "center", margin: "10rem" }, checked: detailed, onToggle: onDetailedChanged })) : null), enabled ? /* @__PURE__ */ import_react9.default.createElement("div", { className: "section_sop" }, detailed ? detailedPage : normalPage) : null);
   };
   var $DataPage = ({ react, debug = false }) => {
     const [rSizesEnabled, setRSizesEnabled] = react.useState(false);
@@ -23772,6 +23778,10 @@
     const [o1SizeMax, setO1SizeMax] = react.useState("");
     const [o2SizeMin, setO2SizeMin] = react.useState("");
     const [o2SizeMax, setO2SizeMax] = react.useState("");
+    const [rStr, setRStr] = react.useState("Residential");
+    const [cStr, setCStr] = react.useState("Commercial");
+    const [iStr, setIStr] = react.useState("Industrial");
+    const [oStr, setOStr] = react.useState("Office");
     const handleREnabledChange = (s) => {
       if (!debug) {
         engine.trigger("zone_spawn_custom.set_r_enabled", s);
@@ -24137,6 +24147,10 @@
       use_data_update_default(react, "zone_spawn_custom.o1_size_max", setO1SizeMax);
       use_data_update_default(react, "zone_spawn_custom.o2_size_min", setO2SizeMin);
       use_data_update_default(react, "zone_spawn_custom.o2_size_max", setO2SizeMax);
+      use_data_update_default(react, "zone_spawn_custom.residential", setRStr);
+      use_data_update_default(react, "zone_spawn_custom.commercial", setCStr);
+      use_data_update_default(react, "zone_spawn_custom.industrial", setIStr);
+      use_data_update_default(react, "zone_spawn_custom.office", setOStr);
     }
     const rData = {
       isEU: false,
@@ -24205,7 +24219,7 @@
         { minSizes: o2Sizes.slice(0, o2Sizes.indexOf(o2SizeMax) + 1), maxSizes: o2Sizes.slice(o2Sizes.indexOf(o2SizeMin) - o2Sizes.length), min: o2SizeMin, max: o2SizeMax, onMinChnaged: handleO2SizeMinChange, onMaxChanged: handleO2SizeMaxChange, icon: "Media/Game/Icons/ZoneOfficeHigh.svg" }
       ]
     };
-    return /* @__PURE__ */ import_react9.default.createElement("div", null, /* @__PURE__ */ import_react9.default.createElement($SettingPage, { react, title: "Residential", enabled: rSizesEnabled, normalData: rData, hasDetail: "true", detailed: rSizesDetailed, hasTheme: "true", detailDatas: [rEuData, rNaData], onEnabledChanged: handleREnabledChange, onDetailedChanged: handleRDetailedChange }), /* @__PURE__ */ import_react9.default.createElement($SettingPage, { react, title: "Commercial", enabled: cSizesEnabled, normalData: cData, hasDetail: "true", detailed: cSizesDetailed, hasTheme: "true", detailDatas: [cEuData, cNaData], onEnabledChanged: handleCEnabledChange, onDetailedChanged: handleCDetailedChange }), /* @__PURE__ */ import_react9.default.createElement($SettingPage, { react, title: "Industrial", enabled: iSizesEnabled, normalData: iData, onEnabledChanged: handleIEnabledChange }), /* @__PURE__ */ import_react9.default.createElement($SettingPage, { react, title: "Office", enabled: oSizesEnabled, normalData: oData, hasDetail: "true", detailed: oSizesDetailed, detailDatas: [oDetailData], onEnabledChanged: handleOEnabledChange, onDetailedChanged: handleODetailedChange }));
+    return /* @__PURE__ */ import_react9.default.createElement("div", null, /* @__PURE__ */ import_react9.default.createElement($SettingPage, { react, title: rStr, enabled: rSizesEnabled, normalData: rData, hasDetail: "true", detailed: rSizesDetailed, hasTheme: "true", detailDatas: [rEuData, rNaData], onEnabledChanged: handleREnabledChange, onDetailedChanged: handleRDetailedChange }), /* @__PURE__ */ import_react9.default.createElement($SettingPage, { react, title: cStr, enabled: cSizesEnabled, normalData: cData, hasDetail: "true", detailed: cSizesDetailed, hasTheme: "true", detailDatas: [cEuData, cNaData], onEnabledChanged: handleCEnabledChange, onDetailedChanged: handleCDetailedChange }), /* @__PURE__ */ import_react9.default.createElement($SettingPage, { react, title: iStr, enabled: iSizesEnabled, normalData: iData, onEnabledChanged: handleIEnabledChange }), /* @__PURE__ */ import_react9.default.createElement($SettingPage, { react, title: oStr, enabled: oSizesEnabled, normalData: oData, hasDetail: "true", detailed: oSizesDetailed, detailDatas: [oDetailData], onEnabledChanged: handleOEnabledChange, onDetailedChanged: handleODetailedChange }));
   };
   var $App = ({ react, debug = false }) => {
     return /* @__PURE__ */ import_react9.default.createElement($Panel, { title: "Zone Spawn Custom", react, id: panelID, maxHeight: "585rem" }, /* @__PURE__ */ import_react9.default.createElement($DataPage, { react, debug }));

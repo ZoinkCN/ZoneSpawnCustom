@@ -13,7 +13,7 @@
     <AssemblyName>ZoneSpawnCustom</AssemblyName>
     <Description>ZoneSpawnCustom</Description>
     <RootNamespace>ZoneSpawnCustom</RootNamespace>
-    <Version>0.2.1</Version>
+    <Version>0.2.0</Version>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
@@ -62,7 +62,7 @@
   </PropertyGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="if not exist &quot;$(Cities2_Location)\BepInEx\plugins\$(ProjectName)&quot; mkdir &quot;$(Cities2_Location)\BepInEx\plugins\$(ProjectName)&quot;&#xD;&#xA;copy /Y &quot;$(TargetDir)0Harmony.dll&quot; &quot;$(Cities2_Location)\BepInEx\plugins\$(ProjectName)\0Harmony.dll&quot;&#xD;&#xA;copy /Y &quot;$(TargetDir)$(ProjectName).dll&quot; &quot;$(Cities2_Location)\BepInEx\plugins\$(ProjectName)\$(ProjectName)_B$(BepInExVersion).dll&quot;&#xD;&#xA;xcopy /Y &quot;$(TargetDir)Languages\&quot; &quot;$(Cities2_Location)\BepInEx\plugins\$(ProjectName)\Languages\&quot; /e" />
+    <Exec Command="if not exist &quot;$(Cities2_Location)\BepInEx\plugins\$(ProjectName)&quot; mkdir &quot;$(Cities2_Location)\BepInEx\plugins\$(ProjectName)&quot;&#xD;&#xA;copy /Y &quot;$(TargetDir)0Harmony.dll&quot; &quot;$(Cities2_Location)\BepInEx\plugins\$(ProjectName)\0Harmony.dll&quot;&#xD;&#xA;copy /Y &quot;$(TargetDir)$(ProjectName).dll&quot; &quot;$(Cities2_Location)\BepInEx\plugins\$(ProjectName)\$(ProjectName)_B$(BepInExVersion).dll&quot;&#xD;&#xA;xcopy /D &quot;$(TargetDir)Languages&quot; &quot;$(Cities2_Location)\BepInEx\plugins\$(ProjectName)\Languages&quot; /e" />
   </Target>
 
   <ItemGroup Condition="'$(TargetFramework.TrimEnd(`0123456789`))' == 'net'">
@@ -163,9 +163,6 @@
       <HintPath>$(Cities2_Location)\Cities2_Data\Managed\Game.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="LanguageManagerLib">
-      <HintPath>..\..\..\BepInEx\plugins\LanguageManager\LanguageManagerLib.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.Entities">
       <HintPath>$(Cities2_Location)\Cities2_Data\Managed\Unity.Entities.dll</HintPath>
       <Private>False</Private>
@@ -209,10 +206,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Languages\zone_spawn_custom.en-US.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Languages\zone_spawn_custom.zh-HANS.json">
+    <None Update="Languages\zh-HANS.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

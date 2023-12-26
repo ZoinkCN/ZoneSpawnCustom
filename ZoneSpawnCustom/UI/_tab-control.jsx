@@ -8,7 +8,7 @@ const $TabControl = ({ react, tabs, style }) => {
             <div className="panel_YqS" style={{ marginLeft: 'auto', marginRight: 'auto', width: '100%' }}>
                 <div className="tab-bar_oPw" style={{ padding: '0' }}>
                     {tabs.map(tab => (
-                        <div key={tab.name} className={`tab_Hrb ${activeTab === tab.name ? 'selected' : ''}`} style={{ flex: '1' }} onClick={() => setActiveTab(tab.name)} style={{ flex: '1', borderRadius: '0' }}>
+                        <div key={tab.name} className={`tab_Hrb ${activeTab === tab.name ? 'selected' : ''}`} onClick={() => setActiveTab(tab.name)} style={{ flex: '1', borderRadius: '0' }}>
                             {tab.icon ? <img src={tab.icon} alt='' style={{ maxWidth: '32rem' }}></img> : null}
                             {tab.iconOnly ? null : <div> {tab.name} </div>}
                         </div>

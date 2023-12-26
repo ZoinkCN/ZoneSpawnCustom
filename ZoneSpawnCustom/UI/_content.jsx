@@ -8,17 +8,23 @@ import $TabControl from './_tab-control'
 const panelID = "zoinkcn.zonespawncustom";
 
 const $ThemeTab = ({ react, datas }) => {
+    const [minStr, setMinStr] = react.useState('Min');
+    const [maxStr, setMaxStr] = react.useState('Max');
+
+    useDataUpdate(react, 'zone_spawn_custom.min', setMinStr);
+    useDataUpdate(react, 'zone_spawn_custom.max', setMaxStr);
+
     return (
         <div style={{ flex: '1' }}>
             {datas.map((item, index) =>
                 <div key={index} style={{ display: 'flex', flexDirection: 'row', width: '100%', flex: '1', alignItems: 'center' }}>
                     <img src={item.icon} alt='' style={{ height: '42.000000rem', width: '42.000000rem', marginLeft: '10.000000rem', marginRight: '5.000000rem' }} />
-                    <div style={{ display: 'flex', flexDirection: 'row', width: '100%', flex: '1' }}>
-                        <div className='field_vGA'>Min</div>
+                    <div style={{ display: 'flex', flexDirection: 'row', width: '100%', flex: '1', alignItems: 'center' }}>
+                        <div className='field_vGA'>{minStr}</div>
                         <$Select react={react} options={item.minSizes} selected={item.min} onSelectionChanged={item.onMinChnaged} style={{ flex: '1', margin: '10rem', minWidth: '10rem' }} />
                     </div>
-                    <div style={{ display: 'flex', flexDirection: 'row', width: '100%', flex: '1' }}>
-                        <div className='field_vGA'>Max</div>
+                    <div style={{ display: 'flex', flexDirection: 'row', width: '100%', flex: '1', alignItems: 'center' }}>
+                        <div className='field_vGA'>{maxStr}</div>
                         <$Select react={react} options={item.maxSizes} selected={item.max} onSelectionChanged={item.onMaxChanged} style={{ flex: '1', margin: '10rem', minWidth: '10rem' }} />
                     </div>
                 </div>
@@ -28,6 +34,8 @@ const $ThemeTab = ({ react, datas }) => {
 }
 
 const $SettingPage = ({ react, title, enabled, normalData, hasDetail = false, detailDatas = null, detailed = false, hasTheme = false, onEnabledChanged = null, onDetailedChanged = null }) => {
+    const [detailStr, setDetailStr] = react.useState('Detail');
+    useDataUpdate(react, 'zone_spawn_custom.detail', setDetailStr);
     const normalPage = <$ThemeTab react={react} datas={normalData.data} ></$ThemeTab>
 
     const detailedPage = hasDetail ? (
@@ -55,7 +63,7 @@ const $SettingPage = ({ react, title, enabled, normalData, hasDetail = false, de
                 <h3 style={{ flex: '1', margin: 'auto 15rem' }}>{title}</h3>
                 {
                     hasDetail && enabled ? <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-                        <h4 style={{ margin: 'auto 5rem auto auto' }}>Detail</h4>
+                        <h4 style={{ margin: 'auto 5rem auto auto' }}>{detailStr}</h4>
                         <$CheckBox react={react} style={{ alignSelf: 'center', margin: '10rem' }} checked={detailed} onToggle={onDetailedChanged} />
                     </div> : null
                 }
@@ -146,6 +154,11 @@ const $DataPage = ({ react, debug = false }) => {
     const [o1SizeMax, setO1SizeMax] = react.useState('')
     const [o2SizeMin, setO2SizeMin] = react.useState('')
     const [o2SizeMax, setO2SizeMax] = react.useState('')
+
+    const [rStr, setRStr] = react.useState('Residential')
+    const [cStr, setCStr] = react.useState('Commercial')
+    const [iStr, setIStr] = react.useState('Industrial')
+    const [oStr, setOStr] = react.useState('Office')
 
     const handleREnabledChange = (s) => {
         if (!debug) {
@@ -523,6 +536,11 @@ const $DataPage = ({ react, debug = false }) => {
         useDataUpdate(react, "zone_spawn_custom.o1_size_max", setO1SizeMax)
         useDataUpdate(react, "zone_spawn_custom.o2_size_min", setO2SizeMin)
         useDataUpdate(react, "zone_spawn_custom.o2_size_max", setO2SizeMax)
+
+        useDataUpdate(react, "zone_spawn_custom.residential", setRStr)
+        useDataUpdate(react, "zone_spawn_custom.commercial", setCStr)
+        useDataUpdate(react, "zone_spawn_custom.industrial", setIStr)
+        useDataUpdate(react, "zone_spawn_custom.office", setOStr)
     }
 
     const rData = {
@@ -597,10 +615,10 @@ const $DataPage = ({ react, debug = false }) => {
     };
 
     return <div>
-        <$SettingPage react={react} title='Residential' enabled={rSizesEnabled} normalData={rData} hasDetail='true' detailed={rSizesDetailed} hasTheme='true' detailDatas={[rEuData, rNaData]} onEnabledChanged={handleREnabledChange} onDetailedChanged={handleRDetailedChange}></$SettingPage>
-        <$SettingPage react={react} title='Commercial' enabled={cSizesEnabled} normalData={cData} hasDetail='true' detailed={cSizesDetailed} hasTheme='true' detailDatas={[cEuData, cNaData]} onEnabledChanged={handleCEnabledChange} onDetailedChanged={handleCDetailedChange}></$SettingPage>
-        <$SettingPage react={react} title='Industrial' enabled={iSizesEnabled} normalData={iData} onEnabledChanged={handleIEnabledChange}></$SettingPage>
-        <$SettingPage react={react} title='Office' enabled={oSizesEnabled} normalData={oData} hasDetail='true' detailed={oSizesDetailed} detailDatas={[oDetailData]} onEnabledChanged={handleOEnabledChange} onDetailedChanged={handleODetailedChange}></$SettingPage>
+        <$SettingPage react={react} title={rStr} enabled={rSizesEnabled} normalData={rData} hasDetail='true' detailed={rSizesDetailed} hasTheme='true' detailDatas={[rEuData, rNaData]} onEnabledChanged={handleREnabledChange} onDetailedChanged={handleRDetailedChange}></$SettingPage>
+        <$SettingPage react={react} title={cStr} enabled={cSizesEnabled} normalData={cData} hasDetail='true' detailed={cSizesDetailed} hasTheme='true' detailDatas={[cEuData, cNaData]} onEnabledChanged={handleCEnabledChange} onDetailedChanged={handleCDetailedChange}></$SettingPage>
+        <$SettingPage react={react} title={iStr} enabled={iSizesEnabled} normalData={iData} onEnabledChanged={handleIEnabledChange}></$SettingPage>
+        <$SettingPage react={react} title={oStr} enabled={oSizesEnabled} normalData={oData} hasDetail='true' detailed={oSizesDetailed} detailDatas={[oDetailData]} onEnabledChanged={handleOEnabledChange} onDetailedChanged={handleODetailedChange}></$SettingPage>
     </div>
 }
 

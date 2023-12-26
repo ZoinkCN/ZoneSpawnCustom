@@ -1,15 +1,12 @@
 ﻿using BepInEx;
 using BepInEx.Configuration;
 using BepInEx.Logging;
-using Colossal.UI.Binding;
-using Game.Zones;
 using HarmonyLib;
 using HookUILib.Core;
+using LanguageManagerLib;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using Unity.Mathematics;
 using UnityEngine.InputSystem.Utilities;
 using ZoneSpawnCustom.Classes;
@@ -117,7 +114,7 @@ namespace ZoneSpawnCustom
         {
             Instance = this;
             var harmony = new Harmony(MyPluginInfo.PLUGIN_NAME);
-
+            LanguageEntryManager.Register("zone_spawn_custom", "zh-HANS");
             harmony.PatchAll();
             Logger.LogInfo($"Plugin {MyPluginInfo.PLUGIN_NAME} is loaded!");
         }

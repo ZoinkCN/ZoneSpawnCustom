@@ -1,0 +1,9 @@
+﻿{
+	"min": "Min",
+	"max": "Max",
+	"detail": "Detail",
+	"residential": "Residential",
+	"commercial": "Commercial",
+	"industrial": "Industrial",
+	"office": "Office"
+}
