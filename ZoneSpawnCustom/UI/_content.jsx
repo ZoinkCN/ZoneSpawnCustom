@@ -20,11 +20,11 @@ const $ThemeTab = ({ react, datas }) => {
                 <div key={index} style={{ display: 'flex', flexDirection: 'row', width: '100%', flex: '1', alignItems: 'center' }}>
                     <img src={item.icon} alt='' style={{ height: '42.000000rem', width: '42.000000rem', marginLeft: '10.000000rem', marginRight: '5.000000rem' }} />
                     <div style={{ display: 'flex', flexDirection: 'row', width: '100%', flex: '1', alignItems: 'center' }}>
-                        <div className='field_vGA'>{minStr}</div>
+                        <div style={{ marginLeft: '6rem' }}>{minStr}</div>
                         <$Select react={react} options={item.minSizes} selected={item.min} onSelectionChanged={item.onMinChnaged} style={{ flex: '1', margin: '10rem', minWidth: '10rem' }} />
                     </div>
                     <div style={{ display: 'flex', flexDirection: 'row', width: '100%', flex: '1', alignItems: 'center' }}>
-                        <div className='field_vGA'>{maxStr}</div>
+                        <div >{maxStr}</div>
                         <$Select react={react} options={item.maxSizes} selected={item.max} onSelectionChanged={item.onMaxChanged} style={{ flex: '1', margin: '10rem', minWidth: '10rem' }} />
                     </div>
                 </div>
@@ -623,7 +623,10 @@ const $DataPage = ({ react, debug = false }) => {
 }
 
 export const $App = ({ react, debug = false }) => {
-    return <$Panel title="Zone Spawn Custom" react={react} id={panelID} maxHeight='585rem'>
+    const [title, setTitle] = react.useState('Zone Spawn Custom')
+    useDataUpdate(react, 'zone_spawn_custom.title', setTitle)
+
+    return <$Panel title={title } react={react} id={panelID} maxHeight='585rem'>
         <$DataPage react={react} debug={debug}></$DataPage>
     </$Panel>
 }

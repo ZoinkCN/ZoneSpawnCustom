@@ -13,7 +13,7 @@
     <AssemblyName>ZoneSpawnCustom</AssemblyName>
     <Description>ZoneSpawnCustom</Description>
     <RootNamespace>ZoneSpawnCustom</RootNamespace>
-    <Version>0.2.1</Version>
+    <Version>0.2.3</Version>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
@@ -163,8 +163,11 @@
       <HintPath>$(Cities2_Location)\Cities2_Data\Managed\Game.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="HookUILib">
+      <HintPath>..\..\..\..\SteamLibrary\steamapps\common\Cities Skylines II\BepInEx\plugins\HookUIMod\HookUILib.dll</HintPath>
+    </Reference>
     <Reference Include="LanguageManagerLib">
-      <HintPath>..\..\..\BepInEx\plugins\LanguageManager\LanguageManagerLib.dll</HintPath>
+      <HintPath>..\..\..\..\SteamLibrary\steamapps\common\Cities Skylines II\BepInEx\plugins\LanguageManager\LanguageManagerLib.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Entities">
       <HintPath>$(Cities2_Location)\Cities2_Data\Managed\Unity.Entities.dll</HintPath>
